@@ -5,7 +5,9 @@
   "dependencies": {
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
-    "react-scripts": "2.1.5"
+    "react-input-range": "^1.3.0",
+    "react-scripts": "2.1.5",
+    "rheostat": "^3.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
