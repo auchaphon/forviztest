@@ -32,6 +32,10 @@ class Home extends Component {
     this.update();
   }
 
+  componentWillUnmount() {
+    window.removeEventListener("resize");
+  }
+
   update = () => {
     this.setState({
       height: window.innerHeight,
@@ -39,7 +43,18 @@ class Home extends Component {
     });
   };
 
-  handleDrag(e) {
+  handleDragLeft(e) {
+    var dragX = e.pageX,
+      dragY = e.pageY;
+    //
+    const slider = document.getElementById("slider");
+    var n = ReactDOM.findDOMNode(slider);
+    var realPosition = dragX - n.offsetLeft;
+    console.log(314 / realPosition);
+    console.log("X: " + dragX + " Y: " + dragY);
+  }
+
+  handleDragRight(e) {
     var dragX = e.pageX,
       dragY = e.pageY;
     //
@@ -56,22 +71,30 @@ class Home extends Component {
         <h1>The average price of an experience is ฿1715.</h1>
         <section className="content-body">
           <Histogram />
-          {/* <InputRange
+          <InputRange
             maxValue={this.max}
             minValue={this.min}
             value={this.state.value}
             onChange={value => this.handleChange(value)}
             onChangeComplete={value => console.log(value)}
-          /> */}
-          <div className="slider" id="slider">
+          />
+
+          {/* <div className="slider" id="slider">
             <div
               draggable="true"
               className="slider-left"
               id="slider-left"
-              onDragEnd={this.handleDrag.bind(this)}
+              onDragEnd={this.handleDragLeft.bind(this)}
               style={{ zIndex: 1000 }}
             />
-          </div>
+            <div
+              draggable="true"
+              className="slider-right"
+              id="slider-right"
+              onDragEnd={this.handleDragRight.bind(this)}
+              style={{ zIndex: 1000 }}
+            />
+          </div> */}
 
           <p className="mt-2">
             ฿{this.state.value.min} - ฿{this.state.value.max}+

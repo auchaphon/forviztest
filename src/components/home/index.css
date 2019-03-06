@@ -57,7 +57,7 @@ div.slider-left {
   position: absolute;
 }
 
-button.slider-right {
+div.slider-right {
   right: 0%;
   position: absolute;
 }
