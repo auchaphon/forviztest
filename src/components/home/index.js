@@ -47,10 +47,10 @@ class Home extends Component {
 
   handleDragLeft(e) {
     var dragX = e.pageX;
-    var no = ReactDOM.findDOMNode(
-      this.refs["UniqueElementIdentifier"]
+    var positionDOM = ReactDOM.findDOMNode(
+      this.refs["sliderMain"]
     ).getBoundingClientRect();
-    const realPosition = dragX - no.x;
+    const realPosition = dragX - positionDOM.x;
     let realPositionPercent = parseInt((realPosition / 314) * 100);
 
     if (realPositionPercent > this.state.sliderRight) {
@@ -68,10 +68,10 @@ class Home extends Component {
 
   handleDragRight(e) {
     var dragX = e.pageX;
-    var no = ReactDOM.findDOMNode(
-      this.refs["UniqueElementIdentifier"]
+    var positionDOM = ReactDOM.findDOMNode(
+      this.refs["sliderMain"]
     ).getBoundingClientRect();
-    const realPosition = dragX - no.x;
+    const realPosition = dragX - positionDOM.x;
     let realPositionPercent = parseInt((realPosition / 314) * 100);
     if (realPositionPercent < this.state.sliderLeft) {
       realPositionPercent = this.state.sliderLeft + 10;
@@ -99,7 +99,7 @@ class Home extends Component {
             onChangeComplete={value => console.log(value)}
           /> */}
 
-          <div className="slider" id="slider" ref="UniqueElementIdentifier">
+          <div className="slider" id="slider" ref="sliderMain">
             <div
               ref="sliderleftRef"
               draggable="true"
@@ -128,7 +128,3 @@ class Home extends Component {
 }
 
 export default Home;
-
-
-
-
